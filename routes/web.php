@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('welcome');});
 
-Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/home', function() {
@@ -31,3 +31,9 @@ Route::get('/company/destroy', [App\Http\Controllers\CompanyController::class, '
 Route::post('/company/update/{id}',[App\Http\Controllers\CompanyController::class, 'update'])->name('company.update');
 Route::get('/company/edit/{id}',[App\Http\Controllers\CompanyController::class, 'edit'])->name('company.edit');
 
+Route::get('/employe', [App\Http\Controllers\EmployeController::class, 'index'])->name('employe');
+Route::get('/employe/create', [App\Http\Controllers\EmployeController::class, 'create'])->name('employe.create');
+Route::post('/employe/store', [App\Http\Controllers\EmployeController::class, 'store'])->name('employe.store');
+Route::get('/employe/destroy', [App\Http\Controllers\EmployeController::class, 'destroy'])->name('employe.destroy');
+Route::post('/employe/update/{id}',[App\Http\Controllers\EmployeController::class, 'update'])->name('employe.update');
+Route::get('/employe/edit/{id}',[App\Http\Controllers\EmployeController::class, 'edit'])->name('employe.edit');
