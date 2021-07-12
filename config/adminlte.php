@@ -226,18 +226,18 @@ return [
 
     'menu' => [
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => true,
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => '#',
-            'icon' => 'fas fa-fw fa-lock',
         ],
         [
             'text' => 'Company',
             'url'  => '/company',
             'icon' => 'fas fa-fw fa-building',
+        ],
+        [
+            'text' => 'Employee',
+            'url'  => '/employe',
+            'icon' => 'fas fa-fw fa-user-tie',
         ],
         
     ],
