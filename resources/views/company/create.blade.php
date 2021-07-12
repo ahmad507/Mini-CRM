@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="col-8">
+    <div class="col-8 drop">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -42,16 +42,18 @@
                     <div class="col-md-6 col-lg-4">
                         <!-- Bootstrap 5 card box -->
                         <div class="card-box">
+                        
                             <div class="card-thumbnail">
                                 <img src="{{ asset('images/'.$company->logo) }}" alt="">
                             </div>
                             <h3><a href="#" class="mt-2 text-danger">{{ $company->name }}</a></h3>
+                            <small>{{ $company->email }}</small>
                             <div><small>Joint :
                                     {{ date('d-m-y', strtotime($company->created_at)) }}</small>
                             </div>
                             <p class="text-secondary">Company Short Description, Address, etc</p>
                             <a href="{{ url('company/edit', $company->id) }}"
-                                class="btn btn-success btn-xs float-right">
+                                class="btn btn-success btn-xs float-right"><i class="fas fa-pen"></i>
                                 Edit
                             </a>
                         </div>
@@ -78,6 +80,11 @@
 
 </script>
 <style>
+    .drop {
+        border-radius: 13px;
+        background-color: #f9f8f9;
+        box-shadow: 0px 0px 10px 0px #c5c5c5;
+    }
     img {
         border: 1px solid #ddd;
         padding: 5px;

@@ -43,7 +43,8 @@
                     <th scope="col">Options</th>
                 </tr>
             </thead>
-            @foreach($companies as $comp)
+            @if(!empty($companies) && $companies->count())
+            @foreach($companies as $key => $comp)
                 <tbody>
                     <tr class="table-row " data-did=" {{ $comp->id ?? '' }}">
                         <td>{{ $comp->name }}</td>
@@ -54,7 +55,13 @@
                     </tr>
                 </tbody>
             @endforeach
+            @else
+                <tr>
+                    <td colspan="10">There are no data.</td>
+                </tr>
+            @endif
         </table>
+        {!! $companies->links() !!}
     </div>
 </div>
 </div>
