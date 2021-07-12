@@ -114,6 +114,7 @@ class CompanyController extends Controller
         }else{
             unset($input['logo']);
         }
+        
         $companies = Company::findOrFail($id);
         $companies->update($input);
         

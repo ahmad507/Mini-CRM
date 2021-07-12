@@ -88,7 +88,10 @@ class EmployeController extends Controller
      */
     public function edit($id)
     {
-        return view('employe.edit');
+        $companies = Company::all();
+        $employe = Employe::findOrFail($id);
+        $data_employe = Employe::all();
+        return view('employe.edit', compact('employe','data_employe','companies'));
     }
 
     /**
@@ -100,7 +103,24 @@ class EmployeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|email|unique:users',
+            'phonenumber' => 'required|min:9'
+            
+        ]);
+        $input = $request->all();
+
+        if ($validator->fails()) {
+            Alert::warning('Ooops...!', 'Incorrect input');
+            return redirect()->route('employe.update')->withSuccessMessage('Makesure First & Last Name has been filled ');
+        }
+        
+         $employe = Employe::findOrFail($id);
+        $employe->update($input);
+        Alert::success('Success', 'Edit Company');
+        return redirect()->route('employe')->withSuccessMessage('Company has been edited');
     }
 
     /**
