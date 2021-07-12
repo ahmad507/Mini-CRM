@@ -1,19 +1,25 @@
 @extends('adminlte::page')
 @section('content')
 <!--delete -->
-<div class="modal fade" id="deleteOrder" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteOrder" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body w-100 text-center ">
                 <form method="DELETE" enctype="multipart/form-data"
                     action="{{ route('employe.destroy') }}">
                     @csrf
-                    <div class="text-center"><h2><i class="fas fa-bullhorn"></i> Attention</h2></div>
+                    <div class="text-center">
+                        <h2><i class="fas fa-bullhorn"></i> Attention</h2>
+                    </div>
                     <div class="dropdown-divider"></div>
-                    <div><h3>Are you sure to continue?</h3></div>
+                    <div>
+                        <h3>Are you sure to continue?</h3>
+                    </div>
                     <input type="hidden" name="id" id="id" value="">
                     <div class="dropdown-divider"></div>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">No, Cancel</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">No,
+                        Cancel</button>
                     <button type="submit" class="btn btn-danger">Yes, Delete</button>
                 </form>
             </div>
@@ -44,19 +50,37 @@
                     <th scope="col">Options</th>
                 </tr>
             </thead>
-            
-                <tbody>
-                    <tr class="table-row ">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button type="submit"  data-toggle="modal" data-target="#deleteOrder" class="btn btn-outline-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></span></td>
-                    </tr>
-                </tbody>
-            
+
+            @if(!empty($employes) && $employes->count())
+                @foreach($employes as $key => $empl)
+
+                    <tbody>
+                        <tr class="table-row" data-did=" {{ $empl->id ?? '' }}">
+                            <td>{{ $empl->firstName }}</td>
+                            <td>{{ $empl->lastName }}</td>
+                            <td>{{ $empl->company->name }}</td>
+                            <td>{{ $empl->email }}</td>
+                            <td>{{ $empl->phonenumber }}</td>
+                            <td>
+                                <button type="submit" data-did="{{$empl->id}}" data-toggle="modal" data-target="#deleteOrder"
+                                    class="btn btn-outline-danger btn-xs"><i class="fa fa-trash"></i>
+                                    Delete</button>
+                                    <a href="{{ url('employe/edit', $empl->id) }}"
+                                class="btn btn-outline-success btn-xs"><i class="fas fa-pen"></i>
+                                Edit
+                            </a>
+                                </td>
+                        </tr>
+                    </tbody>
+
+                @endforeach
+            @else
+                <tr>
+                    <td colspan="10">There are no data.</td>
+                </tr>
+            @endif
         </table>
+        {!! $employes->links() !!}
     </div>
 </div>
 </div>

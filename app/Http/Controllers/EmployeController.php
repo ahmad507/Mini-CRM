@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employe;
+use App\Models\Company;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+use Validator;
 
 class EmployeController extends Controller
 {
@@ -13,7 +18,10 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        return view('employe.index');
+        
+        $employes = Employe::paginate(10);
+        return view('employe.index', compact('employes'));
+        
     }
 
     /**
@@ -23,7 +31,9 @@ class EmployeController extends Controller
      */
     public function create()
     {
-        return view('employe.create');
+        $companies = Company::all();
+        $employes = Employe::select('id','firstName','lastName','company_id','email','phonenumber')->orderBy('id','desc')->get();
+        return view('employe.create',compact('employes','companies'));
     }
 
     /**
@@ -34,7 +44,29 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|email|unique:users',
+            'phonenumber' => 'required|min:9'
+            
+        ]);
+
+        if ($validator->fails()) {
+            Alert::warning('Ooops...!', 'Incorrect input');
+            return redirect()->route('employe.create')->withSuccessMessage('Makesure First & Last Name has been filled ');
+        }
+
+        $data = new Employe;
+        $data->firstName = $request->firstName;
+        $data->lastName = $request->lastName;
+        $data->company_id = $request->company_id;
+        $data->email = $request->email;
+        $data->phonenumber = $request->phonenumber;
+        $data->save();
+           
+            Alert::success('Success', 'Add new company');
+            return redirect()->route('employe')->withSuccessMessage('Company has been added');
     }
 
     /**
@@ -77,8 +109,11 @@ class EmployeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $employes = Employe::findOrFail($request->id);
+        $employes->delete();
+        Alert::success('Delete Data', 'Success');
+        return redirect()->route('employe')->withSuccessMessage('Data has been deleted'); 
     }
 }

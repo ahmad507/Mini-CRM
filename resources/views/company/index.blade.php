@@ -46,7 +46,7 @@
             @if(!empty($companies) && $companies->count())
             @foreach($companies as $key => $comp)
                 <tbody>
-                    <tr class="table-row " data-did=" {{ $comp->id ?? '' }}">
+                    <tr class="table-row" data-did=" {{ $comp->id ?? '' }}">
                         <td>{{ $comp->name }}</td>
                         <td>{{ $comp->email }}</td>
                         <td>{{ $comp->logo }}</td>

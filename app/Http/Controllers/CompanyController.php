@@ -43,7 +43,7 @@ class CompanyController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'logo' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         if ($validator->fails()) {
