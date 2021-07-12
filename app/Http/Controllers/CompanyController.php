@@ -43,7 +43,7 @@ class CompanyController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            
+            'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -54,6 +54,7 @@ class CompanyController extends Controller
         $logo =  $request->file('logo')->getClientOriginalName();
         $newLogoName = time() . '-' . $request->name .'.' . $request->logo->extension(); 
         $request->logo->move(public_path('images'),$newLogoName);
+
         $data = Company::create([
         'name' => $request->input('name'),
         'email' => $request->input('email'),
@@ -99,24 +100,23 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',     
+        $request->validate([
+            'name' => 'required',
         ]);
-        if ($validator->fails()) {
-            Alert::warning('Ooops...!', 'Incorrect input');
-            return redirect()->route('company.create')->withSuccessMessage('Company name is requierement');
+
+        $input = $request->all();
+
+        if ($logo = $request->file('logo')) {
+            $destinationPath = 'images/';
+            $newLogoName = time() . '-' . $request->name .'.' . $request->logo->extension(); 
+            $request->logo->move(public_path('images'),$newLogoName);
+            $input['logo'] = "$newLogoName";
+        }else{
+            unset($input['logo']);
         }
-        
-        $logo =  $request->file('logo');
-        $newLogoName = time() . '-' . $request->name .'.' . $request->logo; 
-        //$request->logo->move(public_path('images'),$newLogoName);
-        
         $companies = Company::findOrFail($id);
-        $companies->name = $request->name;
-        $companies->email = $request->email;
-        $companies->logo = $request->logo_name;
-        $companies->website = $request->website;
-        $companies->save();
+        $companies->update($input);
+        
         Alert::success('Success', 'Edit Company');
         return redirect()->route('company')->withSuccessMessage('Company has been edited');
         

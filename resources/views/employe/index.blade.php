@@ -6,7 +6,7 @@
         <div class="modal-content">
             <div class="modal-body w-100 text-center ">
                 <form method="DELETE" enctype="multipart/form-data"
-                    action="{{ route('company.destroy') }}">
+                    action="{{ route('employe.destroy') }}">
                     @csrf
                     <div class="text-center"><h2><i class="fas fa-bullhorn"></i> Attention</h2></div>
                     <div class="dropdown-divider"></div>
@@ -22,10 +22,10 @@
 </div>
 <!--delete -->
 <br />
-<a class="btn btn-app" href="/company/create">
-    <span class="badge bg-primary">{{ $companies->count('id') }}</span>
-    <i class="fas fa-building"></i>
-    <b>Add Company</b>
+<a class="btn btn-app" href="/employe/create">
+    <span class="badge bg-primary"></span>
+    <i class="fas fa-users"></i>
+    <b>Add Employee</b>
 </a>
 <div class="dropdown-divider"></div>
 <div class="card card-info">
@@ -36,24 +36,26 @@
         <table class="table table-sm text-left table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Company</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Logo</th>
-                    <th scope="col">Website</th>
+                    <th scope="col">Phone</th>
                     <th scope="col">Options</th>
                 </tr>
             </thead>
-            @foreach($companies as $comp)
+            
                 <tbody>
-                    <tr class="table-row " data-did=" {{ $comp->id ?? '' }}">
-                        <td>{{ $comp->name }}</td>
-                        <td>{{ $comp->email }}</td>
-                        <td>{{ $comp->logo }}</td>
-                        <td>{{ $comp->website }}</td>
-                        <td><button type="submit" data-did="{{$comp->id}}" data-toggle="modal" data-target="#deleteOrder" class="btn btn-outline-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></span></td>
+                    <tr class="table-row ">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="submit"  data-toggle="modal" data-target="#deleteOrder" class="btn btn-outline-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></span></td>
                     </tr>
                 </tbody>
-            @endforeach
+            
         </table>
     </div>
 </div>

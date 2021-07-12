@@ -5,7 +5,7 @@
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">New Company</h3>
+            <h3 class="card-title"><b>Add New Company</b></h3>
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data"
@@ -20,12 +20,15 @@
                     <div class="form-group">
                         <input type="text" name="website" class="form-control" placeholder="Website">
                     </div>
+                    <div class="form-group">
+                        <input type="hidden" name="logo_default" class="form-control" value="default.png">
+                    </div>
                     <div class="mb-3">
                         <img id="preview-image" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                             alt="preview image">
                     </div>
                     <div class="form-group">
-                        <input type="file" name="logo" placeholder="Browse Logo" id="image">
+                        <input type="file" name="logo" value="default.png" id="image">
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                 </form>

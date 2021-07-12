@@ -99,11 +99,6 @@
                     <a href="{{ url('/home') }}" class="text-sm text-gray-700 ">Home</a>
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 ">Log in</a>
-
-                    @if(Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="btn btn-info ml-4 text-sm text-gray-700 ">Register</a>
-                    @endif
                 @endauth
             </div>
         @endif

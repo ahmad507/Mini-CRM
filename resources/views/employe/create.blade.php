@@ -1,1 +1,3 @@
-create
+@extends('adminlte::page')
+@section('content')
+@endsection

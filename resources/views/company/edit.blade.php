@@ -20,9 +20,6 @@
                     <div class="form-group">
                         <input type="text" name="website" class="form-control" value="{{$companies->website}}">
                     </div>
-                    <div class="form-group">
-                        <input type="hidden" name="logo_name" class="form-control" value="{{$companies->logo}}">
-                    </div>
                     <div class="mb-3">
                         <img id="preview-image" src="{{ asset('images/'.$companies->logo) }}"
                             alt="preview image" value="{{$companies->logo}}">
