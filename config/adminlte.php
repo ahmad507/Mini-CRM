@@ -228,7 +228,8 @@ return [
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
-        ], 
+        ],
+     
         [
             'text' => 'Company',
             'url'  => '/company',

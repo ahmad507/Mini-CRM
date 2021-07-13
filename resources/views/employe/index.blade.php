@@ -10,17 +10,16 @@
                     action="{{ route('employe.destroy') }}">
                     @csrf
                     <div class="text-center">
-                        <h2><i class="fas fa-bullhorn"></i> Attention</h2>
+                        <h2><i class="fas fa-bullhorn"></i> {{ trans('sentence.attention')}}</h2>
                     </div>
                     <div class="dropdown-divider"></div>
                     <div>
-                        <h3>Are you sure to continue?</h3>
+                        <h3> {{ trans('sentence.tag_1')}}</h3>
                     </div>
                     <input type="hidden" name="id" id="id" value="">
                     <div class="dropdown-divider"></div>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">No,
-                        Cancel</button>
-                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"> {{ trans('sentence.cancel')}}</button>
+                    <button type="submit" class="btn btn-danger"> {{ trans('sentence.delete')}}</button>
                 </form>
             </div>
         </div>
@@ -31,23 +30,23 @@
 <a class="btn btn-app" href="/employe/create">
     <span class="badge bg-primary"></span>
     <i class="fas fa-users"></i>
-    <b>Add Employee</b>
+    <b> {{ trans('sentence.employee')}}</b>
 </a>
 <div class="dropdown-divider"></div>
 <div class="card card-info">
     <div class="card-header">
-        <h3 class="card-title"><b>Company Management</b></h3>
+        <h3 class="card-title"><b> {{ trans('sentence.tag_3')}}</b></h3>
     </div>
     <div class="card-body">
         <table class="table table-sm text-left table-hover">
             <thead>
                 <tr>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Company</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Options</th>
+                    <th scope="col"> {{ trans('sentence.fname')}}</th>
+                    <th scope="col"> {{ trans('sentence.lname')}}</h>
+                    <th scope="col"> {{ trans('sentence.company')}}</th>
+                    <th scope="col"> {{ trans('sentence.email')}}</th>
+                    <th scope="col"> {{ trans('sentence.phone')}}</th>
+                    <th scope="col"> {{ trans('sentence.option')}}</th>
                 </tr>
             </thead>
 
@@ -64,10 +63,10 @@
                             <td>
                                 <button type="submit" data-did="{{$empl->id}}" data-toggle="modal" data-target="#deleteOrder"
                                     class="btn btn-outline-danger btn-xs"><i class="fa fa-trash"></i>
-                                    Delete</button>
+                                    {{ trans('sentence.delete')}}</button>
                                     <a href="{{ url('employe/edit', $empl->id) }}"
                                 class="btn btn-outline-success btn-xs"><i class="fas fa-pen"></i>
-                                Edit
+                                {{ trans('sentence.edit')}}
                             </a>
                                 </td>
                         </tr>

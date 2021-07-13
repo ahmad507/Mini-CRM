@@ -5,7 +5,7 @@
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Edit Company</h3>
+                <h3 class="card-title">{{ trans('sentence.tag_3')}}</h3>
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data"
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <input type="file" name="logo"  value="{{$companies->logo}}" id="image">
                     </div>
-                    <button type="submit" class="btn btn-primary "><i class="fas fa-pen"></i>   Save Edit</button>
+                    <button type="submit" class="btn btn-primary "><i class="fas fa-pen"></i>{{ trans('sentence.save')}}</button>
                 </form>
             </div>
         </div>
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="mt-4 mb-4">Companies</h2>
+                    <h2 class="mt-4 mb-4">{{ trans('sentence.company')}}</h2>
                 </div>
                 @foreach($data_companies as $company)
                     <div class="col-md-6 col-lg-4">
@@ -52,8 +52,8 @@
                             </div>
                             <p class="text-secondary">Company Short Description, Address, etc</p>
                             <a href="{{ url('company/edit', $company->id) }}"
-                                class="btn btn-success btn-xs float-right">
-                                Edit
+                                class="btn btn-success btn-xs float-right"><i class="fas fa-pen"></i>
+                                {{ trans('sentence.edit')}}
                             </a>
                         </div>
                     </div>

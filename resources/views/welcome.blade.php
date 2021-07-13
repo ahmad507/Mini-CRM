@@ -106,10 +106,7 @@
                     @endauth
                 </div>
             @endif
-            <a href="{{ url('in') }}"><img class="flag"
-                    src="{{ url('images/idn.png') }}"></a>
-            <a href="{{ url('en') }}"><img class="flag"
-                    src="{{ url('images/eng.png') }}"></a>
+            
         </div>
     </body>
 </html>

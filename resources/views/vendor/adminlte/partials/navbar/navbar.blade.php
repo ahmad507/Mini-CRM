@@ -35,6 +35,16 @@
         @if(config('adminlte.right_sidebar'))
             @include('adminlte::partials.navbar.menu-item-right-sidebar-toggler')
         @endif
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> 
+            {{app()->getLocale() == 'en' ? 'English' : 'Indonesia' }}
+            <span class="caret">
+            </span>
+            </a>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="lang/en">English</a>
+            <a class="dropdown-item" href="lang/in">Indonesia</a>
+            </div>
+        </li> 
     </ul>
-
 </nav>

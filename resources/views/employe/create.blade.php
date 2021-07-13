@@ -6,7 +6,7 @@
     <div class="col-6">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"><b>Add New Employee</b></h3>
+                <h3 class="card-title"><b> {{ trans('sentence.employee')}}</b></h3>
             </div>
             <div class="card-body">
                 <form method="POST" enctype="multipart/form-data"
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Save</button>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i>  {{ trans('sentence.save')}}</button>
                 </form>
             </div>
         </div>
