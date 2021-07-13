@@ -228,7 +228,7 @@ return [
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
-        ],
+        ], 
         [
             'text' => 'Company',
             'url'  => '/company',
@@ -238,8 +238,7 @@ return [
             'text' => 'Employee',
             'url'  => '/employe',
             'icon' => 'fas fa-fw fa-user-tie',
-        ],
-        
+        ],  
     ],
 
     /*

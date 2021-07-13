@@ -48,7 +48,7 @@
             /* Black w/opacity/see-through */
             color: white;
             font-weight: bold;
-            border: 3px solid #f1f1f1;
+            border: 2px solid #f1f1f1;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -61,9 +61,8 @@
 
         a:link,
         a:visited {
-            background-color: #f44337;
-            opacity: 1.0;
-            color: white;
+            opacity: 0.5;
+            color: #F8f9f9;
             margin-top: 20px;
             margin-left: 15px;
             margin-right: 5px;
@@ -71,38 +70,46 @@
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            border-radius: 50px;
+            border-radius: 2px;
             width: 120px;
-            height: 40px;
+            height: 45px;
+            transition: 1s;
         }
 
         a:hover,
         a:active {
-            background-color: blue;
-            opacity: 0.5;
+            opacity: 1;
+            border: 1px solid #ddd;
+            transform: scale(1.2);
+        }
+
+        .flag {
+            width: 45px;
+            height: 25px;
         }
 
     </style>
 
 </head>
-
-<body>
-<div class="bg-image"></div>
-<div class="bg-text">
-  
-  <h2 style="font-size:50px">Customer Relationship Management</h2>
-  <p>Start Your Session</p>
-  <div class="dropdown-divider"></div>
-  @if(Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4">
-                @auth
-                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 ">Home</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 ">Log in</a>
-                @endauth
-            </div>
-        @endif
-</div>
-</body>
-
+    <body>
+        <div class="bg-image"></div>
+        <div class="bg-text">
+            <h1>WELCOME</h1>
+            <h2 style="font-size:50px">Customer Relationship Management</h2>
+            <div class="dropdown-divider"></div>
+            @if(Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4">
+                    @auth
+                        <a href="{{ url('/home') }}" >Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Log in</a>
+                    @endauth
+                </div>
+            @endif
+            <a href="{{ url('in') }}"><img class="flag"
+                    src="{{ url('images/idn.png') }}"></a>
+            <a href="{{ url('en') }}"><img class="flag"
+                    src="{{ url('images/eng.png') }}"></a>
+        </div>
+    </body>
 </html>
