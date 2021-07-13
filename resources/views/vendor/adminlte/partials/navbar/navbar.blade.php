@@ -42,8 +42,8 @@
             </span>
             </a>
             <div class="dropdown-menu">
-            <a class="dropdown-item" href="lang/en">English</a>
-            <a class="dropdown-item" href="lang/in">Indonesia</a>
+            <a class="dropdown-item" href="/lang/en">English</a>
+            <a class="dropdown-item" href="/lang/in">Indonesia</a>
             </div>
         </li> 
     </ul>
