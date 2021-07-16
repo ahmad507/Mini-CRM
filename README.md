@@ -2,11 +2,12 @@
 
 ## Deployement 
 
-- [clone project]
-- [change .env database]
-- [generate key]
-- [install]
-- login [admin@admin.com password=password]
+- clone project 
+- copy .env.example .env
+- php artisan key:generate
+- php artisan migrate
+- php artisan db:seed --class=UsersTableSeeder
+- login admin@admin.com | password=password
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
